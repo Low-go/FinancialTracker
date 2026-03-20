@@ -6,11 +6,15 @@
         public string Email { get; set; } = string.Empty;
 
         public string PasswordHash { get; set; } = string.Empty;
+
+        public string PinHash {  get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
 
 
         // Navigation properties are how EF Core knows about relationships
-
+        public List<Investment> Investments { get; set; } = new();
+        public List<Budget> Budgets { get; set; } = new();
+        public List<StockWatchlist> StockWatchlist { get; set;} = new();
 
     }
 }

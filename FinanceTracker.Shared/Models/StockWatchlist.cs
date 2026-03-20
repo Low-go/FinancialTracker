@@ -7,7 +7,9 @@ namespace FinanceTracker.Shared.Models
     public class StockWatchlist
     {
         public int Id { get; set; }
-        public string TickerSymbol { get; set; }
-        public string DisplayName { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; } = null!;
+        public string? TickerSymbol { get; set; }
+        public string DisplayName { get; set; } = string.Empty;
     }
 }
