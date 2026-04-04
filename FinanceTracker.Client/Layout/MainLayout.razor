@@ -7,7 +7,30 @@
 
 @*Body seems to be Blazors form of <App/> React equivalent*@
 <MudLayout>
+    <MudAppBar Elevation="0">
+        <MudIconButton/>
+        <MudSpacer/>
+    </MudAppBar>
+
+    <MudDrawer Open="true" Elevation="1" Variant="DrawerVariant.Responsive">
+        <MudDrawerHeader>
+            <MudText Style="font-family: var(--font-display); color: var(--text-primary);">
+                Finance<span style="color: var(--gold);">Track</span>
+            </MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudNavLink>DashBoard</MudNavLink>
+            <MudNavLink>Portfolio</MudNavLink>
+            <MudNavLink>History & SnapShots</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+
     <MudMainContent>
         @Body
     </MudMainContent>
 </MudLayout>
+
+
+@code {
+
+}
