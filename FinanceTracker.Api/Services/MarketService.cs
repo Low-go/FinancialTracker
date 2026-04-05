@@ -8,23 +8,24 @@ namespace FinanceTracker.Api.Services
     {
         private readonly IConfiguration _config;
         private readonly string apiKey;
-        private string QUERY_URL;
+        private string queryURL;
+        private readonly HttpClient _client = new HttpClient();
 
-        // might need this, webhook secrete d78nmfpr01qp0fl5tgl0
-        public MarketService()
+        public MarketService(IConfiguration config)
         {
-            apiKey = _config["FinnHub:ApiKey"];
-            QUERY_URL = $"https://finnhub.io/api/v1/quote?symbol=SPY&token={apiKey}";
+            _config = config;
+            apiKey = config["FinnHub:ApiKey"];
+            queryURL = $"https://finnhub.io/api/v1/quote?symbol=SPY&token={apiKey}";
             Console.WriteLine($"Test to see API Key {_config}");
         }
 
-        public async Task<StockQuote> CreateStockQuote(string url, string Symbol)
+        public async Task<StockQuote> CreateStockQuote(string symbol)
         {
 
             try
             {
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = await client.GetAsync(url); // retunrs json
+                
+                HttpResponseMessage response = await _client.GetAsync(queryURL); // retunrs json
                 string json = await response.Content.ReadAsStringAsync();
                 StockQuote stockQuote = JsonSerializer.Deserialize<StockQuote>(json);
                 return stockQuote;

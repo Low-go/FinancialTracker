@@ -17,8 +17,4 @@
     <ProjectReference Include="..\FinanceTracker.Shared\FinanceTracker.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Layout\Components\" />
-  </ItemGroup>
-
 </Project>
